@@ -1,3 +1,8 @@
+// Ejercicio 1 — Ficha de un estudiante
+// Un sistema universitario necesita registrar la información básica de un estudiante: 
+// nombre completo, código (número entero), semestre actual, promedio acumulado y si 
+// está matriculado o no.
+
 import java.util.Scanner;
 
 public class Ejercicio_1 {
