@@ -7,14 +7,14 @@
 
 public class Ejercicio_6 {
     public static void main(String[] args) {
-        int turnoActual = 123;
+        int turnoActual = 444;
         int turnoEnPantalla = turnoActual; // Se asigna el valor de turnoActual a turnoEnPantalla
         
         System.out.println("Turno actual: " + turnoActual);
         System.out.println("Turno en pantalla: " + turnoEnPantalla);
         
         // Cambiamos el valor de turnoEnPantalla
-        turnoEnPantalla = 456;
+        turnoEnPantalla = 777;
         
         System.out.println("Después de cambiar turnoEnPantalla:");
         System.out.println("Turno actual: " + turnoActual);

@@ -8,14 +8,13 @@
 
 public class Ejercicio_7 {
     public static void main(String[] args) {
-        int[] stockAlmacen = {10, 20, 30, 40, 50}; // Arreglo con el stock de 5 productos
-        int[] stockReportes = stockAlmacen; // stockReportes apunta al mismo arreglo que stockAlmacen
+        int[] stockAlmacen = {10, 20, 30, 40, 50}; 
+        int[] stockReportes = stockAlmacen; 
         
         System.out.println("Stock inicial en el almacén:");
         for (int i=0; i < stockAlmacen.length; i++){
             System.out.println("Producto " + (i+1) + ": " + stockAlmacen[i]);}
-            // Simulamos una venta reduciendo el stock del producto 2 desde stockReportes
-            stockReportes[1] -= 5; // Vendemos 5 unidades del producto 2
+            stockReportes[1] -= 8; 
             
             System.out.println("Después de la venta:");
             System.out.println("Stock en el almacén:");
