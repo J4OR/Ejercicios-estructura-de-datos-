@@ -22,4 +22,3 @@ public class Ejercicio_7 {
                 System.out.println("Producto " + (i+1) + ": " + stockAlmacen[i]);}   
         }    
     }
-            

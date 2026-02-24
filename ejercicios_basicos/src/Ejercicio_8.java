@@ -9,13 +9,11 @@
 
 public class Ejercicio_8 {
     public static void main(String[] args) {
-        String ultimoMensaje = "Hola"; // Se asigna el mensaje "Hola" a ultimoMensaje
-        String copiaTexto = ultimoMensaje; // copiaTexto apunta al mismo texto que ultimoMensaje
+        String ultimoMensaje = "Hola"; 
+        String copiaTexto = ultimoMensaje; 
 
-        // Cambiamos el valor de copiaTexto
         copiaTexto = "Adios";
 
-        // Mostramos ambos mensajes
         System.out.println("Ultimo mensaje: " + ultimoMensaje);
         System.out.println("Copia del texto: " + copiaTexto);
 
