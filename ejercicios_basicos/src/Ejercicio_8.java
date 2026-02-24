@@ -13,7 +13,7 @@ public class Ejercicio_8 {
         String copiaTexto = ultimoMensaje; // copiaTexto apunta al mismo texto que ultimoMensaje
 
         // Cambiamos el valor de copiaTexto
-        copiaTexto = "¿Cómo estas?";
+        copiaTexto = "Adios";
 
         // Mostramos ambos mensajes
         System.out.println("Ultimo mensaje: " + ultimoMensaje);
