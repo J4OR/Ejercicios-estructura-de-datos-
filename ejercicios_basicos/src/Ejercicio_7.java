@@ -21,4 +21,4 @@ public class Ejercicio_7 {
             for (int i=0; i < stockAlmacen.length; i++){
                 System.out.println("Producto " + (i+1) + ": " + stockAlmacen[i]);}   
         }    
-    }
+    } 
