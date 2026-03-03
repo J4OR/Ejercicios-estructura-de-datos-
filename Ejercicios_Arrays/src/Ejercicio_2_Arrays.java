@@ -29,7 +29,6 @@ public class Ejercicio_2_Arrays {
                 low = mid + 1;
             }
         }
-
         if (!encontrar) {
             System.out.println("Cliente no encontrado.");
         }
