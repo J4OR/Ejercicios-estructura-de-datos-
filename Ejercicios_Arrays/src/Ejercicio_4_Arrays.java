@@ -18,7 +18,7 @@ public class Ejercicio_4_Arrays {
         
         int low = 0;
         int high = pagosAlDia.length -1;
-        boolean encontrado= true;
+        boolean encontrado= false;
         
         System.out.print("Ingrese su código de acceso: ");
         int codigoIngresado = sc.nextInt();
@@ -37,7 +37,8 @@ public class Ejercicio_4_Arrays {
             }  
         }
         if (!encontrado) {
-            System.out.println("El codigo " + codigoIngresado + " no esta en la lista" );            
+            System.out.println("XXXXXX ACCESO DENEGADO XXXXXX");
+            System.out.println("El codigo " + codigoIngresado + " no esta en la lista" );      
         }
         sc.close();
     }        
