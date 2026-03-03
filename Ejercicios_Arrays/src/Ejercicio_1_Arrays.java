@@ -11,12 +11,17 @@ public class Ejercicio_1_Arrays {
     public static void main(String[] args) {
         int[] productos = {123456, 654321, 770123, 997721, 3421234, 123789};
         int codigoBuscado = 770123;
+        boolean encontrado = false;
 
         for (int i = 0; i < productos.length; i++) {
             if (productos[i] == codigoBuscado){
                 System.out.println("Producto encontrado en la posición: " + i);
+                encontrado= true;
                 break; 
             }
+        }
+        if (!encontrado) {
+            System.out.println("Producto no encontrado en la estantería.");
         }
     }
 }
