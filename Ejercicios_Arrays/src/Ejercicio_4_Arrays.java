@@ -26,6 +26,7 @@ public class Ejercicio_4_Arrays {
         while (low<=high) {
             int mid = (low + high) / 2 ;
             if (pagosAlDia[mid] == codigoIngresado ) {
+                System.out.println("Acceso permitido");
                 System.out.println("El codigo " + codigoIngresado + "esta en la posicion " + mid);
                 encontrado=true;
                 break;
