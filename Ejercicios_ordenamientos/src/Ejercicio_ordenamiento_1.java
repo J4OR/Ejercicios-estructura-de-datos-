@@ -19,6 +19,11 @@ public class Ejercicio_ordenamiento_1 {
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese la cantidad de participantes: ");
         int n= sc.nextInt();
+
+        while (n < 5 || n > 10) {
+            System.out.println("Cantidad de participantes no válida. Ingrese un número entre 5 y 10.");
+            n = sc.nextInt();
+        }
         
         double[] tiempos = new double[n];
         for (int i = 0; i< n; i++){
