@@ -14,33 +14,41 @@ import java.util.Scanner;
 public class Ejercicio_ordenamiento_2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         System.out.println("Ingrese la cantidad de libros: ");
         int n = sc.nextInt();
 
         int[] libros = new int[n];
+
         for (int i = 0; i < n; i++) {
-            System.out.println("Ingrese el código ISBN del libro " + (i + 1) + ": ");
-            libros[i] = sc.nextInt();
-        }
-        System.out.println("\nproceso de ordenamiento:");
-        // Ordenamiento por inserción
-        for (int i = 1; i < n; i++) {
-            int key = libros[i];
-            int j = i - 1;
-            while (j >= 0 && libros[j] > key) {
-                libros[j + 1] = libros[j];
-                j = j - 1;
+
+            System.out.println("\nIngrese el código ISBN del libro " + (i + 1) + ": ");
+            int key = sc.nextInt();
+
+            libros[n - 1 - i] = key;
+
+            // Inserción
+            for (int j = n - i - 1; j < n; j++) {
+
+                int valor = libros[j];
+                int k = j - 1;
+
+                while (k >= n - 1 - i && libros[k] > valor) {
+                    libros[k + 1] = libros[k];
+                    k--;
+                }
+
+                libros[k + 1] = valor;
             }
-            libros[j + 1] = key;
-            //mostrar paso a paso 
-            System.out.print("Paso " + i + ": [");
-            for (int k = 0; k < n; k++) {
-                System.out.print(libros[k] + " ");
+
+            System.out.print("Paso " + (i + 1) + ": [");
+            for (int j = 0; j < n; j++) {
+                System.out.print(libros[j] + " ");
             }
-            System.out.println("]");
+            System.out.print("]");
+            System.out.println();
         }
 
-        // Imprimir el arreglo ordenado
         System.out.print("\nLibros ordenados: [ ");
         for (int i = 0; i < n; i++) {
             System.out.print(libros[i]);
@@ -49,6 +57,7 @@ public class Ejercicio_ordenamiento_2 {
             }
         }
         System.out.println("]");
+
         sc.close();
     }
 }
