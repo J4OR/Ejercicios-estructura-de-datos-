@@ -27,7 +27,7 @@ public class Ejercicio_ordenamiento_2 {
 
             libros[n - 1 - i] = key;
 
-            // Inserción
+            // ordenamiento por Inserción
             for (int j = n - i - 1; j < n; j++) {
 
                 int valor = libros[j];
