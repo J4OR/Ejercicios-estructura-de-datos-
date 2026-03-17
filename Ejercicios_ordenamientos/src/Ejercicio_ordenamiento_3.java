@@ -35,17 +35,8 @@ public class Ejercicio_ordenamiento_3 {
         }
         System.out.println("]");
 
-        // Ordenamiento Shell
-        for (int gap = n / 2; gap > 0; gap /= 2) {
-            for (int i = gap; i < n; i++) {
-                int temp = pesos[i];
-                int j;
-                for (j = i; j >= gap && pesos[j - gap] > temp; j -= gap) {
-                    pesos[j] = pesos[j - gap];
-                }
-                pesos[j] = temp;
-            }
-        }
+       shellSort(pesos);
+       
         // Mostrar arreglo ordenado
         System.out.print("\nPesos ordenados: [");
         for (int i = 0; i < n; i++) {
@@ -57,4 +48,26 @@ public class Ejercicio_ordenamiento_3 {
         System.out.println("]");
         sc.close();
     }
+
+    //shell sort
+    public static void shellSort(int[] arr) {
+
+        int n = arr.length;
+
+        for (int brecha = n / 2; brecha > 0; brecha /= 2) {
+
+            for (int i = brecha; i < n; i++) {
+
+                int temp = arr[i];
+                int j;
+
+                for (j = i; j >= brecha && arr[j - brecha] > temp; j -= brecha) {
+                    arr[j] = arr[j - brecha];
+                }
+
+                arr[j] = temp;
+            }
+        }
+    }
 }
+

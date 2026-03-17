@@ -11,8 +11,11 @@ public class Ejercicio_2_Arrays {
     public static void main(String[] args) {
         int[] cedulas = {1003, 1005, 1006, 1008, 1010, 1034, 1207, 1234, 1709, 5678}; 
         int cedulaBuscada = 1003;
+        busquedaBinaria(cedulas, cedulaBuscada);
+    }
 
-        int low= 0;
+    public static void busquedaBinaria(int[] cedulas, int cedulaBuscada ){
+         int low= 0;
         int high = cedulas.length - 1;
         boolean encontrar = false;
 

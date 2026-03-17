@@ -22,20 +22,30 @@ public class Ejercicio_ordenamiento_4 {
             System.out.println("Ingrese el nombre del alumno " + (i + 1) + ": ");
             alumnos[i] = sc.nextLine();
         }
-        // Ordenamiento por Inserción
-        for (int i = 1; i < alumnos.length; i++) {
-            String key = alumnos[i];
-            int j = i - 1;
-            while (j >= 0 && key.compareToIgnoreCase(alumnos[j]) < 0) {
-                alumnos[j + 1] = alumnos[j];
-                j--;
-            }
-            alumnos[j + 1] = key;
-        }
+        insertionSort(alumnos);
         System.out.println("Lista de asistencia ordenada alfabéticamente:");
         for (String alumno : alumnos) {
             System.out.println(alumno);
         }
         sc.close();
+    }
+
+    //insertion sort
+    public static void insertionSort(String[] arr) {
+
+        int n = arr.length;
+
+        for (int i = 1; i < n; i++) {
+
+            String temp = arr[i];
+            int j = i - 1;
+
+            while (j >= 0 && arr[j].compareTo(temp) > 0) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+
+            arr[j + 1] = temp;
+        }
     }
 }

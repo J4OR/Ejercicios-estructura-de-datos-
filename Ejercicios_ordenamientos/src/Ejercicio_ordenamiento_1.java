@@ -30,18 +30,7 @@ public class Ejercicio_ordenamiento_1 {
             System.out.println("Ingrese el tiempo del corredor " + (i+1) + ": ");
             tiempos[i] = sc.nextDouble();
         }
-        // Ordenamiento por selección
-        for (int i = 0; i < n - 1; i++) {
-            int im=i;
-            for (int j = i+1; j < n; j++) {
-                if (tiempos[j]< tiempos[im]) {
-                    im = j;
-                }
-            }
-            double temp = tiempos[i];
-            tiempos[i] = tiempos[im];
-            tiempos[im] = temp;
-        }
+        selectionSort(tiempos, n);
 
         // Imprimir el arreglo ordenado
         for (int i = 0; i < tiempos.length; i++) {
@@ -53,5 +42,20 @@ public class Ejercicio_ordenamiento_1 {
         System.out.println("Plata: Corredor " + (1+1) + " con tiempo " + tiempos[1]);
         System.out.println("Bronce: Corredor " + (2+1) + " con tiempo " + tiempos[2]);
         sc.close();
+    }
+
+    // Ordenamiento por selección
+    public static void selectionSort (double[] tiempos, int n){
+        for (int i = 0; i < n - 1; i++) {
+            int im=i;
+            for (int j = i+1; j < n; j++) {
+                if (tiempos[j]< tiempos[im]) {
+                    im = j;
+                }
+            }
+            double temp = tiempos[i];
+            tiempos[i] = tiempos[im];
+            tiempos[im] = temp;
+        }
     }
 }

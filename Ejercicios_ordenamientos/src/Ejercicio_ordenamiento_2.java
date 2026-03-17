@@ -26,20 +26,7 @@ public class Ejercicio_ordenamiento_2 {
             int key = sc.nextInt();
 
             libros[n - 1 - i] = key;
-
-            // ordenamiento por Inserción
-            for (int j = n - i - 1; j < n; j++) {
-
-                int valor = libros[j];
-                int k = j - 1;
-
-                while (k >= n - 1 - i && libros[k] > valor) {
-                    libros[k + 1] = libros[k];
-                    k--;
-                }
-
-                libros[k + 1] = valor;
-            }
+            selectionSort(libros);
 
             System.out.print("Paso " + (i + 1) + ": [");
             for (int j = 0; j < n; j++) {
@@ -59,5 +46,28 @@ public class Ejercicio_ordenamiento_2 {
         System.out.println("]");
 
         sc.close();
+    }
+    
+    // selection sort
+    public static void selectionSort(int[] arr) {
+
+        int n = arr.length;
+
+        for (int i = 0; i < n - 1; i++) {
+
+            int indiceMinimo = i;
+
+            for (int j = i + 1; j < n; j++) {
+
+                if (arr[j] < arr[indiceMinimo]) {
+                    indiceMinimo = j;
+                }
+            }
+
+            // Intercambio
+            int temp = arr[indiceMinimo];
+            arr[indiceMinimo] = arr[i];
+            arr[i] = temp;
+        }
     }
 }
