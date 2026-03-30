@@ -1,0 +1,55 @@
+// Un supermercado necesita gestionar su estante de lácteos. Los productos que vencen más pronto deben colocarse al principio para ser vendidos primero.
+
+// La Clase Producto (Nodo): Debe contener nombre (String), cantidad (int) y diasParaVencer (int).
+// El Problema: Si llega un producto que vence en menos de 3 días, debe insertarse al inicio de la lista (prioridad de venta). Si vence en más tiempo, se pone al final.
+// Reto: Crea un método que imprima solo los productos que tienen menos de 5 días para vencer.
+
+import java.util.Scanner;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        Venta venta = new Venta();
+        int op = 0;
+
+        while (op!=3) {
+            System.out.println("====================================");
+            System.out.println("        Inventario de alimentos");
+            System.out.println("====================================");
+            System.out.println("1. Agregar Producto");
+            System.out.println("2. Imprimir Productos Por Vencer");
+            System.out.println("3. Salir");
+            System.out.println("====================================");
+            System.out.print("Seleccione una opción: ");
+            op = sc.nextInt();
+            sc.nextLine(); 
+
+            switch (op) {
+                case 1:
+                    System.out.print("Nombre del producto: ");
+                    String nombre = sc.nextLine();
+                    System.out.print("Cantidad: ");
+                    int cantidad = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Días para vencer: ");
+                    int diasParaVencer = sc.nextInt();
+                    sc.nextLine();
+                    Producto nuevoProducto = new Producto(nombre, cantidad, diasParaVencer);
+                    venta.agregarProducto(nuevoProducto);
+                    System.out.println("Producto agregado exitosamente.");
+                    break;
+                case 2:
+                    venta.imprimirProductosPorVencer();
+                    break;
+                case 3:
+                    System.out.println("Saliendo del programa...");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Intente de nuevo.");
+            }
+        }
+        sc.close();
+    }
+}
+
+ 

@@ -26,8 +26,6 @@ public class App {
 
             switch (op) {
                 case 1:
-                    System.out.println("\n>>>>>> Agregar Vagon <<<<<");
-                    System.out.println();
                     System.out.print("Contenido del vagon: ");
                     String contenido = sc.nextLine();
                     System.out.print("Peso del vagon (toneladas): ");
