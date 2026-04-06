@@ -52,7 +52,7 @@ public class App {
                     System.out.println("Opción no válida. Intente de nuevo.");
             }
         }
-            
+        sc.close();
         
     }    
 }
