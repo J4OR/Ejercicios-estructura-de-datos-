@@ -51,8 +51,7 @@ public class App {
                     spotify.agregarCancionAlFinal(nuevaCancion2);
                     break;
                 case 3:
-                    spotify.mostrarCanciones();
-                    spotify.sumarDuracionTotal();
+                    spotify.MostrarDuracionTotal();
                     break;
                 case 4:
                     System.out.println("Saliendo del programa...");
