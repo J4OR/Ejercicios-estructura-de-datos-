@@ -1,40 +1,63 @@
 public class Galeria {
-    Fotografia primeraFoto;
-    Fotografia ultimaFoto;
+    Fotografia cabeza;
+    Fotografia cola;
+    Fotografia actual;
 
     public Galeria(){
-        this.primeraFoto = null;
-        this.ultimaFoto = null;
+        this.cabeza = null;
+        this.cola = null;
+        this.actual = null;
     }
 
-    public void agregarFoto(String nombreArchivo, double tamanoMB, String resolucion){
-        Fotografia nuevaFoto = new Fotografia(nombreArchivo, tamanoMB, resolucion);
-        if (primeraFoto == null) {
-            primeraFoto = nuevaFoto;
-            ultimaFoto = nuevaFoto;
+    public void agregarFoto(Fotografia foto) {
+
+        if (cabeza == null) {
+            cabeza = foto;
+            cola = foto;
         } else {
-            ultimaFoto.siguiente = nuevaFoto;
-            nuevaFoto.anterior = ultimaFoto;
-            ultimaFoto = nuevaFoto;
+            cola.siguiente = foto;
+            foto.anterior = cola;
+            cola = foto;
         }
     }
 
-    public void reproducirGaleria() {
-        // Recorrer hacia adelante
-        System.out.println("Recorriendo hacia adelante:");
-        Fotografia actual = primeraFoto;
-        while (actual != null) {
-            System.out.println("Nombre: " + actual.nombreArchivo + ", Tamaño: " + actual.tamanoMB + "MB, Resolución: " + actual.resolucion);
+    public void fotoSiguiente() {
+        if (cabeza == null) {
+            System.out.println("No hay fotos en la galería.");
+            return;
+        }
+
+        if (actual == null) {
+            actual = cabeza; 
+        }   
+        else if (actual.siguiente != null) {
             actual = actual.siguiente;
+        } 
+        else {
+            System.out.println("Ya estás en la última foto.");
+            return;
         }
-
-        // Recorrer hacia atrás
-        System.out.println("\nRecorriendo hacia atrás:");
-        actual = ultimaFoto;
-        while (actual != null) {
-            System.out.println("Nombre: " + actual.nombreArchivo + ", Tamaño: " + actual.tamanoMB + "MB, Resolución: " + actual.resolucion);
-            actual = actual.anterior;
-        }
+        System.out.println("Foto: " + actual.nombreArchivo + " | Tamaño: " + actual.tamanoMB + "MB" + " | Resolución: " + actual.resolucion);
     }
 
+    public void fotoAnterior() {
+        if (cabeza == null) {
+            System.out.println("No hay fotos en la galería.");
+            return;
+        }
+
+        if (actual == null) {
+            actual = cabeza; 
+        }   
+        else if (actual.anterior != null) {
+            actual = actual.anterior;
+        } 
+        else {
+            System.out.println("Ya estás en la primera foto.");
+            return;
+        }
+        System.out.println("Foto: " + actual.nombreArchivo + " | Tamaño: " + actual.tamanoMB + "MB" + " | Resolución: " + actual.resolucion);
+    }
 }
+
+

@@ -13,12 +13,17 @@ public class App {
         Galeria galeria = new Galeria();
         int op ;
         do {
+            System.out.println("\n--- Galería de Fotos ---");
             System.out.println("1. Agregar Foto");
-            System.out.println("2. Reproducir Galería");
-            System.out.println("3. Salir");
+            System.out.println("2. Foto siguiente");
+            System.out.println("3. Foto anterior");
+            System.out.println("4. salir");
+            System.out.println("---------------------------");
             System.out.print("Seleccione una opción: ");
             op = sc.nextInt();
             sc.nextLine(); 
+            System.out.println("");
+            
 
             switch (op) {
                 case 1:
@@ -29,18 +34,25 @@ public class App {
                     sc.nextLine(); 
                     System.out.print("Ingrese la resolución: ");
                     String resolucion = sc.nextLine();
-                    galeria.agregarFoto(nombreArchivo, tamanoMB, resolucion);
+                    Fotografia foto = new Fotografia(nombreArchivo, tamanoMB, resolucion);
+                    galeria.agregarFoto(foto);
                     break;
                 case 2:
-                    galeria.reproducirGaleria();
+                    System.out.println("Foto siguiente:");
+                    galeria.fotoSiguiente();
                     break;
                 case 3:
+                    System.out.println("Foto anterior:");
+                    galeria.fotoAnterior();
+                    break;
+
+                case 4:
                     System.out.println("Saliendo...");
                     break;
                 default:
                     System.out.println("Opción no válida. Intente nuevamente.");
             }
-        } while (op != 3);
+        } while (op != 4);
         sc.close();
     }
 }
