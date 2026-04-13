@@ -12,4 +12,6 @@ public class Cambio {
         this.siguiente = null;
         this.anterior = null;
     }
+    
+
 }
