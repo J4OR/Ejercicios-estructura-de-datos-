@@ -9,7 +9,43 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
-       Proceso proceso1 = new Proceso("Proceso A", 1, 10, 2);
-       System.out.println(proceso1.nombre);
+        Scanner sc = new Scanner(System.in);
+        Planificador planificador = new Planificador();
+        int op;
+        do {
+            System.out.println("1. Agregar proceso");
+            System.out.println("2. Ejecutar planificador");
+            System.out.println("3. Salir");
+            System.out.print("Seleccione una opción: ");
+            op = sc.nextInt();
+            sc.nextLine(); 
+
+            switch (op) {
+                case 1:
+                    System.out.print("Nombre del proceso: ");
+                    String nombre = sc.nextLine();
+                    System.out.print("PID del proceso: ");
+                    int pid = sc.nextInt();
+                    System.out.print("Tiempo restante del proceso: ");
+                    int tiempoRestante = sc.nextInt();
+                    System.out.print("Prioridad del proceso (1-3): ");
+                    int prioridad = sc.nextInt();
+                    sc.nextLine();
+                    Proceso nuevoProceso = new Proceso(nombre, pid, tiempoRestante, prioridad);
+                    planificador.agregarProceso(nuevoProceso);
+                    break;
+                case 2:
+                    System.out.print("Ingrese el quantum de tiempo: ");
+                    int quantum = sc.nextInt();
+                    planificador.ejecutar(quantum);
+                    break;
+                case 3:
+                    System.out.println("Saliendo...");
+                    break;
+                default:
+                    System.out.println("Opción no válida.");
+            }
+        } while (op != 3);
+        sc.close();
     }
 }
