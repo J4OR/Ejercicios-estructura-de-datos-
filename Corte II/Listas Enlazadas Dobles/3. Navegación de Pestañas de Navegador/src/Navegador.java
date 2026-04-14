@@ -41,5 +41,12 @@ public class Navegador {
         }
         System.out.println("Pestaña no encontrada: " + url);
     }
+    public void mostrarPestanas() {
+        Pestana actual = cabeza;
+        while (actual != null) {
+            System.out.println("Título: " + actual.tituloPagina + ", URL: " + actual.url + ", Hora de Apertura: " + actual.horaApertura);
+            actual = actual.siguiente;
+        }
+    }
 
 }
