@@ -13,12 +13,16 @@ public class App {
         Planificador planificador = new Planificador();
         int op;
         do {
+            System.out.println("\n--- Planificador de CPU (Round Robin) ---");
+            System.out.println("-------------------------------------------");
             System.out.println("1. Agregar proceso");
             System.out.println("2. Ejecutar planificador");
             System.out.println("3. Salir");
+            System.out.println("-------------------------------------------");
             System.out.print("Seleccione una opción: ");
             op = sc.nextInt();
             sc.nextLine(); 
+            System.out.println();
 
             switch (op) {
                 case 1:

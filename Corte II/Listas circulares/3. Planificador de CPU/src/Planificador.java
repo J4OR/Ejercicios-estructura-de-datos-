@@ -24,33 +24,57 @@ public class Planificador {
         }
 
         Proceso actual = cabeza;
-        while (cabeza != null) { 
-            System.out.println("Ejecutando proceso: " + actual.nombre + " (PID: " + actual.pid + ")");
-            actual.tiempoRestante -= quantum; 
+        String orden = "";
 
-            if (actual.tiempoRestante <= 0) { 
+        while (cabeza != null) {
+
+            System.out.println("Ejecutando proceso: " + actual.nombre + " (PID: " + actual.pid + ")");
+
+            actual.tiempoRestante -= quantum;
+
+            if (actual.tiempoRestante <= 0) {
+
                 System.out.println("Proceso " + actual.nombre + " ha terminado.");
-                eliminarProceso(actual); 
+                orden += actual.nombre + " -> ";
+
+                Proceso siguiente = actual.siguiente; 
+                eliminarProceso(actual);
+                actual = siguiente;
+
             } else {
                 System.out.println("Tiempo restante del proceso " + actual.nombre + ": " + actual.tiempoRestante);
-                actual = actual.siguiente; 
+                actual = actual.siguiente;
             }
         }
-    }
+
+        System.out.println("\nOrden de finalización:");
+        System.out.println(orden);
+}
 
     private void eliminarProceso(Proceso proceso) {
+
         if (proceso == cabeza && proceso == cola) {
             cabeza = null;
             cola = null;
-        } else if (proceso == cabeza) {
+        } 
+        else if (proceso == cabeza) {
             cabeza = cabeza.siguiente;
-            cola.siguiente = cabeza; 
-        } else if (proceso == cola) { 
+            cola.siguiente = cabeza;
+        } 
+        else if (proceso == cola) {
             Proceso actual = cabeza;
             while (actual.siguiente != cola) {
-                actual = actual.siguiente; 
+                actual = actual.siguiente;
             }
             actual.siguiente = cabeza;
+            cola = actual; 
+        } 
+        else {
+            Proceso temp = cabeza;
+            while (temp.siguiente != proceso) {
+                temp = temp.siguiente;
+            }
+            temp.siguiente = proceso.siguiente;
         }
     }
 }
