@@ -31,13 +31,20 @@ public class Reproductor {
         int tiempoTotal = 0;
 
         for (int i = 0; i < ciclos; i++) {
-            System.out.println("Ciclo " + (i + 1) + ": " + actual.titulo);
-            actual.vecesRepetido++;
-            tiempoTotal += actual.duracionSegundos;
-            actual = actual.siguiente; 
+
+            System.out.println("\nCiclo " + (i + 1) + ":");
+
+            do {
+                System.out.println("Mostrando: " + actual.titulo);
+
+                actual.vecesRepetido++;
+                tiempoTotal += actual.duracionSegundos;
+
+                actual = actual.siguiente;
+
+            } while (actual != cabeza); 
         }
 
-       
         Anuncio anuncioMasRepetido = cabeza;
         Anuncio temp = cabeza.siguiente;
 
@@ -48,7 +55,9 @@ public class Reproductor {
             temp = temp.siguiente;
         }
 
-        System.out.println("\nAnuncio más repetido: " + anuncioMasRepetido.titulo + " con " + anuncioMasRepetido.vecesRepetido + " repeticiones.");
-        System.out.println("Tiempo total acumulado en pantalla: " + tiempoTotal + " segundos.");
+        System.out.println("\nAnuncio más repetido: " + anuncioMasRepetido.titulo +
+                " con " + anuncioMasRepetido.vecesRepetido + " repeticiones.");
+
+        System.out.println("Tiempo total acumulado: " + tiempoTotal + " segundos.");
     }
 }
