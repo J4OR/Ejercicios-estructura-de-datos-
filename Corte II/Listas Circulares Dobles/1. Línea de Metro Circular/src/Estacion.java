@@ -11,6 +11,8 @@ public class Estacion {
         this.nombre = nombre;
         this.zona = zona;
         this.pasajerosDiarios = pasajerosDiarios;
+        this.siguiente = null;
+        this.anterior = null;
     }
 
 
