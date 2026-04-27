@@ -4,12 +4,10 @@
 public class Historial {
     Comando cabeza;
     Comando cola;
-    Comando cursor;
 
     public Historial() {
         this.cabeza = null;
         this.cola = null;
-        this.cursor = null;
     }
     
     public boolean estaVacia() {
@@ -38,9 +36,8 @@ public class Historial {
             System.out.println("El historial está vacío.");
             return;
         } 
-        if (cursor != null && cursor.siguiente != null) {
-            cursor = cursor.siguiente; // Mover el cursor al siguiente comando (más reciente)
-
+        if (cola != null && cola.siguiente != null) {
+            cola = cola.siguiente; // Mover el cursor al siguiente comando (más reciente)
         }
     }
     
@@ -49,55 +46,16 @@ public class Historial {
             System.out.println("El historial está vacío.");
             return;
         } 
-        if (cursor != null && cursor.anterior != null) {
-            cursor = cursor.anterior; // Mover el cursor al comando anterior (más antiguo)
+        if (cabeza != null && cabeza.anterior != null) {
+            cabeza = cabeza.anterior; // Mover el cursor al comando anterior (más antiguo)
         }
     }
 
-    public void mostrarCursor() {
+    public void mostrarCursor(){
         if (estaVacia()){
             System.out.println("El historial está vacío.");
             return;
         } 
-         System.out.println(">> " + cursor.texto + " | " + (cursor.exitoso ? "SI" : "NO") + " | " + cursor.directorio);
+        
     }
-
-    public void eliminarActual(String texto) {
-        if (estaVacia()){
-            System.out.println("El historial está vacío.");
-            return;
-        } 
-        if (cursor == null) {
-            System.out.println("No hay comando seleccionado para eliminar.");
-            return;
-        }
-        if (cursor == cabeza && cursor == cola) {
-            cabeza = null;
-            cola = null;
-            cursor = null;
-        } else {
-            cursor.anterior.siguiente = cursor.siguiente;
-            cursor.siguiente.anterior = cursor.anterior;
-            if (cursor == cabeza) {
-                cabeza = cursor.siguiente;
-            }
-            if (cursor == cola) {
-                cola = cursor.anterior;
-            }
-            cursor = cursor.siguiente; 
-        }
-    }
-    public void mostrarHistorial() {
-        if (estaVacia()){
-            System.out.println("El historial está vacío.");
-            return;
-        } 
-        Comando actual = cabeza;
-        do {
-            String marcador = (actual == cursor) ? ">> " : "   ";
-            System.out.println(marcador + actual.texto + " | " + (actual.exitoso ? "SI" : "NO") + " | " + actual.directorio);
-            actual = actual.siguiente;
-        } while (actual != cabeza);
-    }
-    
 }
