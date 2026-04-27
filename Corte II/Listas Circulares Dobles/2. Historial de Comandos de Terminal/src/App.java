@@ -13,6 +13,7 @@ public class App {
         Historial historial = new Historial();
         int opcion;
         do {
+            System.out.println("\n ------------- Menu ---------------");
             System.out.println("1. Agregar comando");
             System.out.println("2. Navegar arriba");
             System.out.println("3. Navegar abajo");
@@ -22,7 +23,7 @@ public class App {
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
-            scanner.nextLine(); // Consumir el salto de línea
+            scanner.nextLine(); 
 
             switch (opcion) {
                 case 1:
@@ -30,10 +31,11 @@ public class App {
                     String texto = scanner.nextLine();
                     System.out.print("¿Fue exitoso? (true/false): ");
                     boolean exitoso = scanner.nextBoolean();
-                    scanner.nextLine(); // Consumir el salto de línea
+                    scanner.nextLine(); 
                     System.out.print("Ingrese el directorio: ");
                     String directorio = scanner.nextLine();
                     historial.agregarComando(texto, exitoso, directorio);
+                    System.out.println("Agregacion exitosa!");
                     break;
                 case 2:
                     historial.arriba();
@@ -43,12 +45,15 @@ public class App {
                     break;
                 case 4:
                     historial.eliminarActual();
+                    System.out.println("Eliminacion exitosa!");
+                    System.out.println();
                     break;
                 case 5:
                     historial.mostrarHistorial();
                     break;
                 case 6:
                     // Simulación del ejemplo
+                    System.out.println("\n ejemplooo");
                     historial.agregarComando("ls -la", true, "/home/user");
                     historial.agregarComando("cd /var", true, "/home/user");
                     historial.agregarComando("cat secret.txt", false, "/home/user");

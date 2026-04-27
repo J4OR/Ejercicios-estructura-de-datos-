@@ -4,58 +4,113 @@
 public class Historial {
     Comando cabeza;
     Comando cola;
+    Comando cursor;
 
     public Historial() {
-        this.cabeza = null;
-        this.cola = null;
+        cabeza = null;
+        cola = null;
+        cursor = null;
     }
-    
+
     public boolean estaVacia() {
-            return cabeza == null;
-        }
+        return cabeza == null;
+    }
 
-        public void agregarComando(String texto, boolean exitoso, String directorio) {
-            Comando nueva = new Comando(texto, exitoso, directorio);
-            if (cabeza == null) {
-                nueva.siguiente = nueva;
-                nueva.anterior = nueva;
-                cabeza = nueva;
-                cola = nueva;
-            } else {
-                cola.siguiente = nueva;
-                nueva.anterior = cola;
-                nueva.siguiente = cabeza;
-                cabeza.anterior = nueva;
-                cola = nueva;
-            }
-        }
-    
-    public void arriba(){
+    public void agregarComando(String texto, boolean exitoso, String directorio) {
+        Comando nuevo = new Comando(texto, exitoso, directorio);
 
-        if (estaVacia()){
-            System.out.println("El historial está vacío.");
-            return;
-        } 
-        if (cola != null && cola.siguiente != null) {
-            cola = cola.siguiente; // Mover el cursor al siguiente comando (más reciente)
+        if (cabeza == null) {
+            nuevo.siguiente = nuevo;
+            nuevo.anterior = nuevo;
+            cabeza = cola = cursor = nuevo;
+        } else {
+            cola.siguiente = nuevo;
+            nuevo.anterior = cola;
+            nuevo.siguiente = cabeza;
+            cabeza.anterior = nuevo;
+            cola = nuevo;
         }
     }
-    
+
+    public void arriba() {
+        if (estaVacia()){
+            System.out.println("No hay comandos");
+            return;
+        }
+        cursor = cursor.anterior;
+        mostrarCursor();
+    }
+
     public void abajo() {
         if (estaVacia()){
-            System.out.println("El historial está vacío.");
+            System.out.println("No hay comandos");
             return;
-        } 
-        if (cabeza != null && cabeza.anterior != null) {
-            cabeza = cabeza.anterior; // Mover el cursor al comando anterior (más antiguo)
         }
+        cursor = cursor.siguiente;
+        mostrarCursor();
     }
 
-    public void mostrarCursor(){
-        if (estaVacia()){
-            System.out.println("El historial está vacío.");
+    public void mostrarCursor() {
+         if (estaVacia()){
+            System.out.println("No hay comandos");
             return;
-        } 
-        
+        }
+
+        System.out.println(">> " + cursor.texto + " | " + (cursor.exitoso ? "SI" : "NO") + " | " + cursor.directorio);
+    }
+
+    public void eliminarActual() {
+    if (cabeza == null) return;
+    if (cursor == null) return;
+
+    Comando actual = cabeza;
+
+    do {
+        if (actual == cursor) {
+
+            // Caso: solo un nodo
+            if (actual.siguiente == actual) {
+                cabeza = null;
+                cola = null;
+                cursor = null;
+                return;
+            }
+            actual.anterior.siguiente = actual.siguiente;
+            actual.siguiente.anterior = actual.anterior;
+
+         
+            if (actual == cabeza) cabeza = actual.siguiente;
+            if (actual == cola) cola = actual.anterior;
+
+           
+            cursor = actual.siguiente;
+
+            return;
+        }
+
+        actual = actual.siguiente;
+    } while (actual != cabeza);
+}
+
+    public void mostrarHistorial() {
+        if (estaVacia()) {
+            System.out.println("Historial vacío.");
+            return;
+        }
+
+        System.out.println("\n=== Historial de Comandos ===");
+        Comando actual = cabeza;
+        int i = 1;
+
+        do {
+            String marca = (actual == cursor) ? " <-- [CURSOR]" : "";
+
+            System.out.println(i + ". " + actual.texto +
+                    " | " + (actual.exitoso ? "SI" : "NO") +
+                    " | " + actual.directorio + marca);
+
+            actual = actual.siguiente;
+            i++;
+        } while (actual != cabeza);
     }
 }
