@@ -86,12 +86,9 @@ public class Editor {
 
         do {
             String activa = (actual == capaActiva) ? "[x] " : "[ ] ";
-            String vis = actual.visible ? "Visible" : "Oculta";
+            String visible = actual.visible ? "Visible" : "Oculta";
 
-            System.out.println(
-                activa + actual.nombre +
-                " (" + actual.tipo + ") - " + vis
-            );
+            System.out.println(activa + actual.nombre + " (" + actual.tipo + ") - " + visible);
 
             actual = actual.siguiente;
         } while (actual != cabeza);
