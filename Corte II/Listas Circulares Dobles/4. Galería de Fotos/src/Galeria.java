@@ -3,11 +3,13 @@
 public class Galeria {
     Foto cabeza;
     Foto cola;
+    Foto actual;
 
 
     public Galeria() {
         this.cabeza = null;
         this.cola = null;
+        this.actual = null;
     }
 
     public boolean estaVacia() {
@@ -17,10 +19,9 @@ public class Galeria {
     public void agregarFoto(String titulo, String fecha) {
         Foto nuevaFoto = new Foto(titulo, fecha);
         if (cabeza == null) {
-            cabeza = nuevaFoto;
-            cola = nuevaFoto;
             nuevaFoto.siguiente = nuevaFoto;
             nuevaFoto.anterior = nuevaFoto;
+            cabeza = cola = actual = nuevaFoto;
         } else {
             cola.siguiente = nuevaFoto;
             nuevaFoto.anterior = cola;
@@ -35,7 +36,7 @@ public class Galeria {
             System.out.println("La galería está vacía.");
             return;
         }
-        cabeza = cabeza.siguiente;
+        actual = actual.siguiente;
         mostrarFotoActual();
     }
 
@@ -44,7 +45,7 @@ public class Galeria {
             System.out.println("La galería está vacía.");
             return;
         }
-        cabeza = cabeza.anterior;
+        actual = actual.anterior;
         mostrarFotoActual();
     }
     public void toggleFavorita() {
@@ -52,14 +53,14 @@ public class Galeria {
             System.out.println("La galería está vacía.");
             return;
         }
-        cabeza.esFavorita = !cabeza.esFavorita;
+        actual.esFavorita = !actual.esFavorita;
     }
     public void mostrarFotoActual() {
         if (estaVacia()){
             System.out.println("La galería está vacía.");
             return;
         }
-        System.out.println("Foto Actual: " + cabeza.titulo + " (" + cabeza.fecha + ") " + (cabeza.esFavorita ? "[FAVORITA]" : ""));
+        System.out.println("Foto Actual: " + actual.titulo + " (" + actual.fecha + ") " + (actual.esFavorita ? "[FAVORITA]" : ""));
     }
 
     public void eliminarActual(){
@@ -67,16 +68,16 @@ public class Galeria {
             System.out.println("La galería está vacía.");
             return;
         }
-        if (cabeza == cabeza.siguiente) {
+        if (actual == actual.siguiente) {
             cabeza = null;
             cola = null;
         } else {
-            cabeza.anterior.siguiente = cabeza.siguiente;
-            cabeza.siguiente.anterior = cabeza.anterior;
-            if (cabeza == cola) {
-                cola = cabeza.anterior;
+            actual.anterior.siguiente = actual.siguiente;
+            actual.siguiente.anterior = actual.anterior;
+            if (actual == cola) {
+                cola = actual.anterior;
             }
-            cabeza = cabeza.siguiente;
+            actual = actual.siguiente;
         }
     }
     public void mostrarGaleria() {
@@ -85,6 +86,7 @@ public class Galeria {
             return;
         }
         Foto actual = cabeza;
+        System.out.println("\n==== LISTA DE FOTOS ====");
         do {
             String favorito = actual.esFavorita ? "[F]" : "";
             String actualMarker = (actual == cabeza) ? "[A]" : "";
