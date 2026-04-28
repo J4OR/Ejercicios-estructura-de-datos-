@@ -68,7 +68,6 @@ public class Historial {
     do {
         if (actual == cursor) {
 
-            // Caso: solo un nodo
             if (actual.siguiente == actual) {
                 cabeza = null;
                 cola = null;
