@@ -36,6 +36,7 @@ public class Galeria {
             return;
         }
         cabeza = cabeza.siguiente;
+        mostrarFotoActual();
     }
 
     public void anterior() {
@@ -44,6 +45,7 @@ public class Galeria {
             return;
         }
         cabeza = cabeza.anterior;
+        mostrarFotoActual();
     }
     public void toggleFavorita() {
         if (estaVacia()){
@@ -51,6 +53,13 @@ public class Galeria {
             return;
         }
         cabeza.esFavorita = !cabeza.esFavorita;
+    }
+    public void mostrarFotoActual() {
+        if (estaVacia()){
+            System.out.println("La galería está vacía.");
+            return;
+        }
+        System.out.println("Foto Actual: " + cabeza.titulo + " (" + cabeza.fecha + ") " + (cabeza.esFavorita ? "[FAVORITA]" : ""));
     }
 
     public void eliminarActual(){
@@ -77,8 +86,8 @@ public class Galeria {
         }
         Foto actual = cabeza;
         do {
-            String favorito = actual.esFavorita ? "[★]" : "";
-            String actualMarker = (actual == cabeza) ? "[▶]" : "";
+            String favorito = actual.esFavorita ? "[F]" : "";
+            String actualMarker = (actual == cabeza) ? "[A]" : "";
             System.out.println(actualMarker + favorito + " " + actual.titulo + " (" + actual.fecha + ")");
             actual = actual.siguiente;
         } while (actual != cabeza);
