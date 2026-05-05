@@ -42,7 +42,7 @@ public class App {
                     break;
                 case 3:
                     historial.abajo();
-                    break;
+                    break;  
                 case 4:
                     historial.eliminarActual();
                     System.out.println("Eliminacion exitosa!");
