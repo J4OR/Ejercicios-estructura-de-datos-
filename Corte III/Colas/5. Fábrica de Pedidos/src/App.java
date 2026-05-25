@@ -30,10 +30,14 @@ public class App {
                     cola.imprimir();
                     break;
                 case 2:
-                    System.out.print("Numero de pedido: ");  String num   = scanner.nextLine();
-                    System.out.print("Cliente: ");           String cli   = scanner.nextLine();
-                    System.out.print("Total a pagar: $");    double total = scanner.nextDouble(); scanner.nextLine();
-                    System.out.print("Cancelado? (s/n): ");  boolean can  = scanner.nextLine().equalsIgnoreCase("s");
+                    System.out.print("Numero de pedido: ");  
+                    String num   = scanner.nextLine();
+                    System.out.print("Cliente: ");           
+                    String cli   = scanner.nextLine();
+                    System.out.print("Total a pagar: $");    
+                    double total = scanner.nextDouble(); scanner.nextLine();
+                    System.out.print("Cancelado? (s/n): ");  
+                    boolean can  = scanner.nextLine().equalsIgnoreCase("s");
                     cola.enqueue(new Pedido(num, cli, total, can));
                     System.out.println("Pedido registrado en la cola.");
                     break;
