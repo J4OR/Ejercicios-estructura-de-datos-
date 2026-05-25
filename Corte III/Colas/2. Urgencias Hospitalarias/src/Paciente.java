@@ -7,10 +7,10 @@ public class Paciente {
     Paciente siguiente;
 
     public Paciente(String cedula, String nombreCompleto, int edad, String sintomaPrincipal) {
-        this.cedula          = cedula;
+        this.cedula = cedula;
         this.nombreCompleto  = nombreCompleto;
-        this.edad            = edad;
+        this.edad = edad;
         this.sintomaPrincipal = sintomaPrincipal;
-        this.siguiente       = null;
+        this.siguiente = null;
     }
 }

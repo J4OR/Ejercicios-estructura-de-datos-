@@ -29,10 +29,14 @@ public class App {
                     cola.imprimir();
                     break;
                 case 2:
-                    System.out.print("Cedula: ");          String cedula = scanner.nextLine();
-                    System.out.print("Nombre completo: "); String nombre = scanner.nextLine();
-                    System.out.print("Edad: ");            int    edad   = scanner.nextInt(); scanner.nextLine();
-                    System.out.print("Sintoma principal: ");String sintoma = scanner.nextLine();
+                    System.out.print("Cedula: ");          
+                    String cedula = scanner.nextLine();
+                    System.out.print("Nombre completo: "); 
+                    String nombre = scanner.nextLine();
+                    System.out.print("Edad: ");            
+                    int edad = scanner.nextInt(); scanner.nextLine();
+                    System.out.print("Sintoma principal: ");
+                    String sintoma = scanner.nextLine();
                     cola.enqueue(new Paciente(cedula, nombre, edad, sintoma));
                     System.out.println("Paciente registrado.");
                     break;

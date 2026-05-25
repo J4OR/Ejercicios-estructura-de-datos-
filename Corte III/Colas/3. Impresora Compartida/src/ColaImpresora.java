@@ -65,10 +65,10 @@ public class ColaImpresora {
         System.out.println(" -> ENTRADA");
     }
 
-    // Reto: usa puntero auxiliar para NO alterar salida/entrada
+    
     public int calcularPaginasTotales() {
         int total = 0;
-        Documento auxiliar = salida;   // recorremos con auxiliar, nunca movemos los punteros reales
+        Documento auxiliar = salida;   
         while (auxiliar != null) {
             total    += auxiliar.numeroPaginas;
             auxiliar  = auxiliar.siguiente;

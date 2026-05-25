@@ -65,7 +65,6 @@ public class ColaPacientes {
         System.out.println(" -> ENTRADA");
     }
 
-    // Reto: extrae uno a uno, imprime info de cada paciente y reporta el total
     public void atenderTodos() {
         if (isEmpty()) {
             System.out.println("No hay pacientes para atender.");
