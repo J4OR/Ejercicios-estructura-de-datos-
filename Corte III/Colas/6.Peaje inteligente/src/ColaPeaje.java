@@ -65,7 +65,7 @@ public class ColaPeaje {
         System.out.println(" -> ENTRADA");
     }
 
-    // Reto: vacía la cola acumulando tarifas solo de vehículos no exentos
+    
     public void cerrarTurno() {
         if (isEmpty()) {
             System.out.println("No hay vehículos en el carril.");
