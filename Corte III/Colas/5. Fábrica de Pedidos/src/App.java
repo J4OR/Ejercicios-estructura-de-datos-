@@ -1,3 +1,10 @@
+// 5. Fábrica de Pedidos (E-commerce)
+// Una tienda en línea recibe pedidos de manera continua. Cada pedido ingresa a una cola central de procesamiento. El sistema de bodega toma los pedidos en orden de llegada para preparar el envío. Si un pedido ya fue cancelado por el cliente, debe ser descartado automáticamente al momento de ser procesado.
+
+// La Clase Pedido (Nodo): Debe contener numeroPedido (String), cliente (String), totalPagar (double) y cancelado (boolean).
+// El Problema: La bodega necesita procesar solo los pedidos vigentes. Los cancelados deben ser eliminados sin ser despachados, pero registrados en un conteo.
+// Reto: Implementa un método procesarPedidos() que recorra y vacíe la cola. Para cada pedido: si cancelado = true, lo descarta e incrementa un contador de cancelados; si cancelado = false, lo "despacha" imprimiendo sus datos. Al finalizar, muestra el total despachado y el total cancelado.
+
 import java.util.Scanner;
 
 public class App {
@@ -5,11 +12,10 @@ public class App {
         ColaPedidos cola = new ColaPedidos();
         Scanner scanner = new Scanner(System.in);
 
-        // Datos de prueba — mezcla de vigentes y cancelados
         cola.enqueue(new Pedido("ORD-001", "Carlos Lopez",  85000.0,  false));
-        cola.enqueue(new Pedido("ORD-002", "Diana Vargas", 120000.0,  true));   // cancelado
+        cola.enqueue(new Pedido("ORD-002", "Diana Vargas", 120000.0,  true));  
         cola.enqueue(new Pedido("ORD-003", "Miguel Torres", 47500.0,  false));
-        cola.enqueue(new Pedido("ORD-004", "Sara Nieto",     9900.0,  true));   // cancelado
+        cola.enqueue(new Pedido("ORD-004", "Sara Nieto",     9900.0,  true));   
         cola.enqueue(new Pedido("ORD-005", "Jhon Castro",  210000.0,  false));
         cola.enqueue(new Pedido("ORD-006", "Paula Ramos",   33000.0,  false));
 
