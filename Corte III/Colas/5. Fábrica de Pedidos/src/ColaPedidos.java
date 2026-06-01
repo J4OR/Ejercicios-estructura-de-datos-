@@ -65,7 +65,7 @@ public class ColaPedidos {
         System.out.println(" -> ENTRADA");
     }
 
-    // Reto: vacía la cola, despacha vigentes y descarta cancelados con conteo separado
+
     public void procesarPedidos() {
         if (isEmpty()) {
             System.out.println("No hay pedidos para procesar.");
